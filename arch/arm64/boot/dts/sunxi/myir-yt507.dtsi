@@ -9,7 +9,7 @@
 #include "sun50iw9p1-myir.dtsi"
 
 /*display*/
-#include "display/myir-hdmi-1920x1080-1lvds-7-1024x600.dtsi"     
+//#include "display/myir-hdmi-1920x1080-1lvds-7-1024x600.dtsi"     
 //#include "display/myir-lcd-1lvds-7-1024-600.dtsi"
 //#include "display/myir-lcd-lvds-10.1-1280-800.dtsi" 
 //#include "display/myir-lcd-2lvds-7-1024-600.dtsi"
@@ -65,7 +65,7 @@
        pw_en {
                compatible = "pw-en-gpio";
                gpio0 = <&pio PD 25 1 0xffffffff 0xffffffff 1>;// 4G 3.3Vi
-		gpio1 = <&pio PD 22 1 0xffffffff 0xffffffff 1>;// VDD3.3-IO
+	       gpio1 = <&pio PD 22 1 0xffffffff 0xffffffff 1>;// VDD3.3-IO
 /*
                gpio1 = <&pio PE 3 1 0xffffffff 0xffffffff 1>; //USB 5V
                gpio2 = <&pio PE 16 1 0xffffffff 0xffffffff 1>;// hub reset
@@ -144,12 +144,12 @@
 		};
 		/*emmc*/
 		sdc2: sdmmc@04022000 {
-		//	pinctrl-0 = <&sdc2_pins_a &sdc2_pins_c>;
+			//pinctrl-0 = <&sdc2_pins_a &sdc2_pins_c>;
 			non-removable;
 			bus-width = <8>;
 			mmc-ddr-1_8v;
 			mmc-hs200-1_8v;
-			//mmc-hs400-1_8v;
+		//	mmc-hs400-1_8v;
 			no-sdio;
 			no-sd;
 			cap-mmc-highspeed;

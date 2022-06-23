@@ -14,7 +14,7 @@
 //#include "display/myir-lcd-lvds-10.1-1280-800.dtsi" 
 //#include "display/myir-lcd-2lvds-7-1024-600.dtsi"
 //#include "display/myir-lcd-2lvds-21-1920-1080.dtsi"
-#include "display/myir-hdmi.dtsi"
+//#include "display/myir-hdmi.dtsi"
 //#include "display/myir-tv.dtsi"
 
 
@@ -132,18 +132,18 @@
 		};
 		/*emmc*/
 		sdc2: sdmmc@04022000 {
-		//	pinctrl-0 = <&sdc2_pins_a &sdc2_pins_c>;
+			//pinctrl-0 = <&sdc2_pins_a &sdc2_pins_c>;
 			non-removable;
 			bus-width = <8>;
-			//mmc-ddr-1_8v;
-			//mmc-hs200-1_8v;
+			mmc-ddr-1_8v;
+			mmc-hs200-1_8v;
 			//mmc-hs400-1_8v;
 			no-sdio;
 			no-sd;
 			cap-mmc-highspeed;
 			sunxi-power-save-mode;
 			sunxi-dis-signal-vol-sw;
-			max-frequency = <25000000>;
+			max-frequency = <50000000>;
 			ctl-spec-caps = <0x8>;
 			vqmmc-supply = <&reg_aldo1>;
 			vmmc-supply = <&reg_dcdc1>;
