@@ -66,6 +66,8 @@
                compatible = "pw-en-gpio";
                gpio0 = <&pio PD 25 1 0xffffffff 0xffffffff 1>;// 4G 3.3Vi
 	       gpio1 = <&pio PD 22 1 0xffffffff 0xffffffff 1>;// VDD3.3-IO
+	       //gpio2 = <&pio PE 17 1 0xffffffff 0xffffffff 1>;
+	       //gpio3 = <&pio PE 16 1 0xffffffff 0xffffffff 1>;
 /*
                gpio1 = <&pio PE 3 1 0xffffffff 0xffffffff 1>; //USB 5V
                gpio2 = <&pio PE 16 1 0xffffffff 0xffffffff 1>;// hub reset
@@ -387,8 +389,8 @@
 			wlan_io_regulator = "axp858-cldo2";
 			wlan_regon    = <&pio PE 12 1 0xffffffff 0xffffffff 1>;
 			wlan_hostwake = <&pio PE 14 1 0xffffffff 0xffffffff 1>;
-			chip_en = <>;
-			power_en = <>;
+			chip_en;
+			power_en;
 			status        = "okay";
 		};
 
@@ -760,14 +762,14 @@ vinc(x)_sensor_list: use sensor list
 				//sensor1_cameravdd-supply = <&reg_aldo5>;
 				//sensor1_cameravdd_vol = <3300000>;
 				sensor1_iovdd-supply = <&reg_aldo5>;
-				sensor1_iovdd_vol = <3300000>;
+				sensor1_iovdd_vol = <2800000>;
 				/*
 				sensor1_avdd-supply = <&reg_bldo4>;
 				sensor1_avdd_vol = <1200000>;
 				sensor1_dvdd-supply = <&reg_bldo5>;
 				sensor1_dvdd_vol = <1200000>;
 				*/
-				sensor1_power_en = <>;
+				//sensor1_power_en = <&pio PD 22 1 1 1 0>;//3V3_io
 				sensor1_reset = <>;
 				sensor1_pwdn = <>;
 				sensor1_sm_vs = <>;
