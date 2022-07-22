@@ -50,12 +50,12 @@ chn_cfg_mode     : Hardware DE channel allocation config. 0:single display with 
 			
 			dev0_output_type         = <1>;
 			dev0_output_mode         = <4>;
-			dev0_screen_id           = <0>;
+			dev0_screen_id           = <1>;
 			dev0_do_hpd              = <0>;
 
 			dev1_output_type         = <1>;
 			dev1_output_mode         = <4>;
-			dev1_screen_id           = <1>;
+			dev1_screen_id           = <0>;
 			dev1_do_hpd              = <0>;
 
 			def_output_dev           = <0>;
@@ -139,7 +139,7 @@ pull up or pull down(default 0), driver level(default 1), data>
 ;For lvds0: use lvds0_pins_a  and lvds0_pins_b instead
 ;----------------------------------------------------------------------------------*/
 		&lcd0 {
-			lcd_used            = <1>;
+			lcd_used            = <0>;
 
 			lcd_driver_name     = "default_lcd";//bp101wx1
 			lcd_backlight       = <200>;

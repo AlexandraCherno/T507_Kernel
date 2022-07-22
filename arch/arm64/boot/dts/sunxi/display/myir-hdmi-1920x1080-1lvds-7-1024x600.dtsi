@@ -43,7 +43,7 @@ chn_cfg_mode     : Hardware DE channel allocation config. 0:single display with 
 			disp_mode                = <0>;
 
 			screen0_output_type      = <3>;
-			screen0_output_mode      = <10>;//0x23 for 4K
+			screen0_output_mode      = <4>;//0x23 for 4K
 
 			screen1_output_type      = <1>;
 			screen1_output_mode      = <4>;
@@ -67,7 +67,7 @@ chn_cfg_mode     : Hardware DE channel allocation config. 0:single display with 
 			screen1_output_aspect_ratio = <8>;
 
 			dev0_output_type         = <3>;
-			dev0_output_mode         = <10>;//0x23 for 4K
+			dev0_output_mode         = <4>;//0x23 for 4K
 			dev0_screen_id           = <0>;
 			dev0_do_hpd              = <0>;
 
@@ -80,8 +80,8 @@ chn_cfg_mode     : Hardware DE channel allocation config. 0:single display with 
 			hdmi_mode_check          = <1>;
 
 			fb0_format               = <0>;
-			fb0_width                = <1920>;//3840 for 4K
-			fb0_height               = <1080>;//2160 for 4k
+			fb0_width                = <1280>;//3840 for 4K
+			fb0_height               = <720>;//2160 for 4k
 
 			fb1_format               = <5>;
 			fb1_width                = <1024>;

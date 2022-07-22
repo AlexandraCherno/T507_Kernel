@@ -64,9 +64,9 @@
 	
        pw_en {
                compatible = "pw-en-gpio";
-               gpio0 = <&pio PD 25 1 0xffffffff 0xffffffff 1>;// 4G 3.3Vi
+               gpio0 = <&pio PD 25 1 0xffffffff 0xffffffff 0>;// 4G 3.3Vi
 	       gpio1 = <&pio PD 22 1 0xffffffff 0xffffffff 1>;// VDD3.3-IO
-	       //gpio2 = <&pio PE 17 1 0xffffffff 0xffffffff 1>;
+	       gpio2 = <&pio PE 13 1 0xffffffff 0xffffffff 1>;
 	       //gpio3 = <&pio PE 16 1 0xffffffff 0xffffffff 1>;
 /*
                gpio1 = <&pio PE 3 1 0xffffffff 0xffffffff 1>; //USB 5V
@@ -157,7 +157,7 @@
 			cap-mmc-highspeed;
 			sunxi-power-save-mode;
 			sunxi-dis-signal-vol-sw;
-			max-frequency = <100000000>;
+			max-frequency = <50000000>;
 			ctl-spec-caps = <0x8>;
 			vqmmc-supply = <&reg_aldo1>;
 			vmmc-supply = <&reg_dcdc1>;
@@ -399,16 +399,16 @@
 			clocks        = <&clk_losc_out>;
 			bt_power      = "axp858-dcdc1";
 			bt_io_regulator = "axp858-cldo2";
-			bt_rst_n      = <&pio PE 13 1 0xffffffff 0xffffffff 0>;
+			bt_rst_n;
 			status        = "okay";
 		};
 
 		btlpm:btlpm {
 			compatible  = "allwinner,sunxi-btlpm";
 			uart_index  = <0x1>;
-		//	bt_wake     = <&pio PE 7 1 0xffffffff 0xffffffff 1>;
-		//	bt_hostwake = <&pio PE 13 1 0xffffffff 0xffffffff 0>;
-			status      = "disabled";
+			bt_wake	    = <&pio PE 16 1 0xffffffff 0xffffffff 1>;
+			bt_hostwake = <&pio PE 17 1 0xffffffff 0xffffffff 1>;
+			status      = "okay";
 		};
 
 		car_reverse:car_reverse {
