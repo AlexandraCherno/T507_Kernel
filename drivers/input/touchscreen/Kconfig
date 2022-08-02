@@ -1106,6 +1106,21 @@ config TOUCHSCREEN_ROHM_BU21023
 	  To compile this driver as a module, choose M here: the
 	  module will be called bu21023_ts.
 
+config TOUCHSCREEN_GOODIX_GT928
+        tristate "Goodix I2C touchscreen gt928"
+        depends on I2C
+        help
+          Say Y here if you have the Goodix touchscreen (such as one
+          installed in Onda v975w tablets) connected to your
+          system. It also supports 5-finger chip models, which can be
+          found on ARM tablets, like Wexler TAB7200 and MSI Primo73.
+
+          If unsure, say N.
+
+          To compile this driver as a module, choose M here: the
+          module will be called goodix.
+
+
 config  TOUCHSCREEN_GT82X
 	tristate  "gt82x touchscreen driver"
 	default m
