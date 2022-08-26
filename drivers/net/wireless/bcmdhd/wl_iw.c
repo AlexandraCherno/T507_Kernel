@@ -748,6 +748,7 @@ wl_iw_get_freq(
 	error = dev_wlc_intvar_get(dev, "chanspec", &chanspec);
 	if (error) {
 		return error;
+	}
 	ctl_chan = wf_chspec_ctlchan(chanspec);
 
 	/* Return radio channel in channel form */
