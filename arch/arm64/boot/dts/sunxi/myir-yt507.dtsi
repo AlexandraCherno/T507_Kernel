@@ -150,13 +150,13 @@
 			non-removable;
 			bus-width = <8>;
 			mmc-ddr-1_8v;
-			mmc-hs200-1_8v;
+		//	mmc-hs200-1_8v;
 		//	mmc-hs400-1_8v;
 			no-sdio;
 			no-sd;
 			cap-mmc-highspeed;
 			sunxi-power-save-mode;
-			sunxi-dis-signal-vol-sw;
+		//	sunxi-dis-signal-vol-sw;
 			max-frequency = <50000000>;
 			ctl-spec-caps = <0x8>;
 			vqmmc-supply = <&reg_aldo1>;
