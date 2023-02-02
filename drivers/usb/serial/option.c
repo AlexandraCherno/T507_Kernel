@@ -245,6 +245,7 @@ static void option_instat_callback(struct urb *urb);
 
 #define QUECTEL_VENDOR_ID			0x2c7c
 /* These Quectel products use Quectel's vendor ID */
+#define QUECTEL_PRODUCT_EC20                    0x0125
 #define QUECTEL_PRODUCT_EC21			0x0121
 #define QUECTEL_PRODUCT_EC25			0x0125
 #define QUECTEL_PRODUCT_BG96			0x0296
@@ -1091,6 +1092,8 @@ static const struct usb_device_id option_ids[] = {
 	{ USB_DEVICE(QUALCOMM_VENDOR_ID, UBLOX_PRODUCT_R410M),
 	  .driver_info = RSVD(1) | RSVD(3) },
 	/* Quectel products using Quectel vendor ID */
+	{ USB_DEVICE(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_EC20),
+	  .driver_info = RSVD(4) },
 	{ USB_DEVICE(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_EC21),
 	  .driver_info = RSVD(4) },
 	{ USB_DEVICE(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_EC25),
@@ -2012,6 +2015,9 @@ static struct usb_serial_driver option_1port_device = {
 	.suspend           = usb_wwan_suspend,
 	.resume            = usb_wwan_resume,
 #endif
+#if 1 //Added by Quectel
+	.reset_resume = usb_wwan_resume,
+#endif
 };
 
 static struct usb_serial_driver * const serial_drivers[] = {
@@ -2049,11 +2055,37 @@ static int option_probe(struct usb_serial *serial,
 		return -ENODEV;
 
 	/* For USB Remote Wakeup with Quectel 4G module */
-	if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2C7C)) {
+	/*if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2C7C)) {
 		pm_runtime_set_autosuspend_delay(&serial->dev->dev, 3000);
 		usb_enable_autosuspend(serial->dev);
 		device_init_wakeup(&serial->dev->dev, 1);
+	}*/
+
+#if 0 //Added by Quectel
+       	if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2C7C)) {
+		__u16 idProduct = le16_to_cpu(serial->dev->descriptor.idProduct);
+		struct usb_interface_descriptor *intf = &serial->interface->cur_altsetting->desc;
+		if (intf->bInterfaceClass != 0xFF || intf->bInterfaceSubClass == 0x42) {
+			return -ENODEV;
+		}
+
+		if ((idProduct&0xF000) == 0x0000) {
+	 	 	if (intf->bInterfaceNumber == 4 && intf->bNumEndpoints == 3 && intf->bInterfaceSubClass == 0xFF && intf->bInterfaceProtocol == 0xFF)
+			return -ENODEV;
+		}
 	}
+#endif
+
+#if 1 
+	if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2C7C)) {
+		      if (serial->interface->cur_altsetting->desc.bInterfaceClass != 0xFF) {
+			               return -ENODEV;
+				            }
+		           else if (serial->interface->cur_altsetting->desc.bInterfaceNumber >= 4) {
+				            return -ENODEV;
+					         }
+			    }
+#endif
 
 	/* Store the device flags so we can use them during attach. */
 	usb_set_serial_data(serial, (void *)device_flags);

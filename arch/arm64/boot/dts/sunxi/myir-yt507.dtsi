@@ -221,8 +221,8 @@
 			phy-rst = <&pio PI 6 1 1 1 0>;
 			//phy-power = <&pio PD 22 1 1 1 0>;
 			use_ephy25m = <1>;
-			tx-delay = <2>;//2
-			rx-delay = <20>;//24
+			tx-delay = <3>;//2
+			rx-delay = <14>;//24
 			gmac-power0-supply = <&reg_dcdc6>;
 			gmac-power1-supply;
 			gmac-power2-supply;
@@ -576,10 +576,10 @@
 			status = "disabled";
 		};
 
-		/*
+		
 		sndhdmi:sound@1{
 			status = "okay";
-		};*/
+		};
 
 		snddaudio2:sound@2{
 			sunxi,snddaudio-codec = "sgtl5000.4-000a";

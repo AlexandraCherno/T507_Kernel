@@ -1019,13 +1019,14 @@ int fts_ctpm_fw_upgrade_with_i_file(void)
 	getVerNo(buf, BUFFER_LEN);
 	a = buf[0];
 	b = fts_ctpm_get_i_file_ver();
-	/* printk("a == %hu,  b== %hu \n",a, b);*/
+		printk("a == %hu,  b== %hu chipid == %hu \n",a, b, chip_id);
 	/*
 	 * when the firmware in touch panel maybe corrupted,
 	 * or the firmware in host flash is new, need upgrade
 	 */
 	if ( 0xa6 == a || a != b ){
 		/*call the upgrade function*/
+		/*
 		if(chip_id == 0x55 || chip_id == 0x08 || chip_id == 0x00 || chip_id == 0x0a){
 			i_ret =  ft5x06_ctpm_fw_upgrade(&pbt_buf[0],sizeof(CTPM_FW));
 			if (i_ret != 0){
@@ -1038,6 +1039,8 @@ int fts_ctpm_fw_upgrade_with_i_file(void)
 #endif
 			}
 		}
+		*/
+		printk("hello");
 	}
 	return i_ret;
 
